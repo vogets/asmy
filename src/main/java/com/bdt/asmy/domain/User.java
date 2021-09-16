@@ -22,7 +22,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(length = 128,nullable = false,unique = true)
     private String email;
     private Boolean enabled;
@@ -34,6 +34,7 @@ public class User implements Serializable {
     private String password;
     @Column(length = 64)
     private String photos;
+    private Boolean locked;
     @ManyToMany
     @JoinTable(
             name = "user_roles",
@@ -48,10 +49,10 @@ public class User implements Serializable {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
-    private Set<Role> authorities=new HashSet<>();
+    private Set<Authority> authorities=new HashSet<>();
 
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", updatable = false)
     private Date createdAt;
 
     @LastModifiedDate

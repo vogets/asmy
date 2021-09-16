@@ -25,13 +25,13 @@ public class Role implements Serializable {
     }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column(length = 40,nullable = false,unique = true)
     private String name;
     @Column(length = 1024,nullable = false,unique = true)
     private String description;
     @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", updatable = false)
     private Date createdAt;
     @LastModifiedDate
     @Column(name = "updated_at")
